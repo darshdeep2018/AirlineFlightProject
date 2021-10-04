@@ -14,7 +14,7 @@ public class Flight {
 	private Integer flightId;
 
 	int flightNumber;
-	Airline airline;
+	//Airline airline;
 	String fromPlace;
 	String toPlace;
 	String startDateTime;
@@ -27,11 +27,11 @@ public class Flight {
 	int numberOfRows;
 	Meal meal;
 
-	public Integer getId() {
+	public Integer getFlightId() {
 		return flightId;
 	}
 
-	public void setId(Integer id) {
+	public void setFlightId(Integer id) {
 		this.flightId = id;
 	}
 
@@ -43,13 +43,6 @@ public class Flight {
 		this.flightNumber = flightNumber;
 	}
 
-	public Airline getAirline() {
-		return airline;
-	}
-
-	public void setAirline(Airline airline) {
-		this.airline = airline;
-	}
 
 	public String getFromPlace() {
 		return fromPlace;

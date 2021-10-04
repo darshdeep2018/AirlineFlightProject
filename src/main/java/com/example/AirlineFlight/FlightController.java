@@ -14,17 +14,12 @@ public class FlightController {
 	@Autowired
 	FlightService flightService;
 
-	// New Airline Booking
-	@PostMapping(value = "/airline/register")
-	void bookingAirline() {
-		System.out.println("ticketbooked...");
-	}
-
 	// Add Inventory/Schedule of an existing Airline
 	@PostMapping(value = "/airline/inventory/add")
-	void addSchedule(@RequestBody Flight flight) {
+	Integer addSchedule(@RequestBody Flight flight) {
 		flightService.save(flight);
 		System.out.println("schedule added successfully");
+		return flight.getFlightId();
 	}
 
 	// Search on flights

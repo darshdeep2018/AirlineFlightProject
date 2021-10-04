@@ -11,20 +11,22 @@ public class TicketService {
 	TicketRepository ticketRepository;
 
 	public int saveTicket(Ticket ticket) {
-		int pnr=(int) Math.random();
-		ticket.setPnr(pnr);
 		ticketRepository.save(ticket);
 		System.out.println(ticket);
-		return pnr;
+		return ticket.getPnr();
 	}
 
-	public List<Ticket> ticketDetails() {
-		return ticketRepository.findAll();
+	public List<Ticket> getTicketDetails(String email) {
+		return ticketRepository.findByEmail(email);
 	}
 
 	public Ticket getTicketByPnr(int pnr) {
-		ticketRepository.findByPnr(pnr);
-		return null;
+		return ticketRepository.findByPnr(pnr);
+	}
+
+	public void deleteByPnr(int pnr) {
+		Ticket ticket=ticketRepository.findByPnr(pnr);
+		ticketRepository.delete(ticket);
 	}
 
 }

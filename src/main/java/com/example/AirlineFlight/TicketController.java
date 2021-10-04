@@ -1,5 +1,7 @@
 package com.example.AirlineFlight;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,23 +20,29 @@ public class TicketController {
 	@PostMapping(value = "/booking/{flightId}")
 	int bookTicket(@PathVariable Integer flightId,@RequestBody Ticket ticket) {
 		ticket.setFlightId(flightId);
+		int pnr=(int) (Math.random()*1000);
+		ticket.setPnr(pnr);
 		System.out.println("Flight Ticket booked called");
 		return ticketService.saveTicket(ticket);
 	}
 
 	@GetMapping(value = "/ticket/{pnr}")
-	void getBookedTicket(@PathVariable int pnr) {
+	Ticket getBookedTicket(@PathVariable int pnr) {
+		System.out.println("called get TIcket by PNR");
 		Ticket ticket=ticketService.getTicketByPnr(pnr);
 		System.out.println(ticket);
+		return ticket;
 	}
 
-	@GetMapping(value = "/ticket/{pnr}")
-	void getHistoryOfBookedTicket() {
+	@GetMapping(value = "/ticket/history/{email}")
+	List<Ticket> getHistoryOfBookedTicket(@PathVariable String email) {
 		System.out.println("called History of Booked Ticket...");
+		return ticketService.getTicketDetails(email);
 	}
 
 	@DeleteMapping(value = "/booking/cancel/{pnr}")
-	void deleteTicket() {
-		System.out.println("Ticket Deleted...");
+	String deleteTicket(@PathVariable int pnr) {
+		ticketService.deleteByPnr(pnr);
+		return "Ticket Deleted...";
 	}
 }
