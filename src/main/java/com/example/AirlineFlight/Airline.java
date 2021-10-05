@@ -1,11 +1,14 @@
 package com.example.AirlineFlight;
 
 import java.util.ArrayList;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Airline {
@@ -13,7 +16,8 @@ public class Airline {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer AirlineId;
 	private String address;
-	private ArrayList<Integer> flightsIds;
+	@OneToMany(cascade=CascadeType.ALL)
+	private Set<Flight> flights;
 	private String airlineName;
 	private String contactNumber;
 
@@ -33,12 +37,12 @@ public class Airline {
 		this.address = address;
 	}
 
-	public ArrayList<Integer> getFlightsIds() {
-		return flightsIds;
+	public Set<Flight> getFlights() {
+		return flights;
 	}
 
-	public void setFlightsIds(ArrayList<Integer> flightsIds) {
-		this.flightsIds = flightsIds;
+	public void setFlightsIds(Set<Flight> flights) {
+		this.flights = flights;
 	}
 
 	public Integer getAirlineId() {

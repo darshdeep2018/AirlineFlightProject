@@ -24,8 +24,8 @@ public class FlightController {
 
 	// Search on flights
 	@PostMapping(value = "/search")
-	List<Flight> searchFlight() {
+	List<Flight> searchFlight(@RequestBody Flight flight) {
 		System.out.println("Flights found");
-		return flightService.getFlights();
+		return flightService.getFlights(flight);
 	}
 }

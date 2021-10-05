@@ -15,7 +15,8 @@ public class FlightService {
 		System.out.println(flight);
 	}
 
-	public List<Flight> getFlights() {
-		return flightRepository.findAll();
+
+	public List<Flight> getFlights(Flight flight) {
+		return flightRepository.findByFromPlaceOrToPlaceOrStartDateTimeOrEndDateTimeOrTrip(flight.getFromPlace(),flight.getToPlace(),flight.getStartDateTime(),flight.getEndDateTime(),flight.getTrip());
 	}
 }

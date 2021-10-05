@@ -13,19 +13,27 @@ public class Flight {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer flightId;
 
-	int flightNumber;
-	//Airline airline;
-	String fromPlace;
-	String toPlace;
-	String startDateTime;
-	String endDateTime;
-	ArrayList<String> scheduleDays;
-	String instrumentUsed;
-	int businessClassSeats;
-	int nonBusinessClassSeats;
-	int ticketCost;
-	int numberOfRows;
-	Meal meal;
+	private int flightNumber;
+	private String fromPlace;
+	private String toPlace;
+	private String startDateTime;
+	private String endDateTime;
+	private ArrayList<String> scheduleDays;
+	private String instrumentUsed;
+	private int businessClassSeats;
+	private int nonBusinessClassSeats;
+	private int ticketCost;
+	private int numberOfRows;
+	private Meal meal;
+	private Trip trip;
+
+	public Trip getTrip() {
+		return trip;
+	}
+
+	public void setTrip(Trip trip) {
+		this.trip = trip;
+	}
 
 	public Integer getFlightId() {
 		return flightId;
